@@ -1,8 +1,7 @@
-package helloWorld;
+package t01_helloWorld;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import org.junit.Test;
 import utils.RabbitMQUtils;
 
@@ -19,19 +18,6 @@ public class Provider {
     //生产者 生产消息
     @Test
     public void testSendMessage() throws IOException, TimeoutException {
-       /* //创建连接mq的连接工厂对象
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        //设置连接rabbitmq的主机    ip
-        connectionFactory.setHost("192.168.2.234");
-        //设置端口号
-        connectionFactory.setPort(5672);
-        //设置连接哪个虚拟主机
-        connectionFactory.setVirtualHost("/ems");
-        //设置访问虚拟主机的用户名和密码
-        connectionFactory.setUsername("ems");
-        connectionFactory.setPassword("123");*/
-
-
         //获取连接对象
         Connection connection = RabbitMQUtils.getConnection();
         //获取连接通道

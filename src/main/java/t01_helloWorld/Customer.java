@@ -1,4 +1,4 @@
-package helloWorld;
+package t01_helloWorld;
 
 import com.rabbitmq.client.*;
 import utils.RabbitMQUtils;
@@ -15,13 +15,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class Customer {
     public static void main(String[] args) throws IOException, TimeoutException {
-  /*      //创建连接工厂
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("192.168.2.234");
-        connectionFactory.setPort(5672);
-        connectionFactory.setVirtualHost("/ems");  //虚拟主机
-        connectionFactory.setUsername("ems");
-        connectionFactory.setPassword("123");*/
         //创建连接对象
         Connection connection = RabbitMQUtils.getConnection();
         //创建通道
