@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            margin: 100px auto;
+            height: 150px;
+            width: 170px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        .box .image{
+            width: 100%;
+            height: 95px;
+            background-image: url("../video/196495551-1-208.mp431c53b3b-6dc5-41c0-99f2-586ddfde7415.jpg"); /*封面*/
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+        }
+        .box>p{
+            margin: 5px;
+            /* 设置标题超出两行的字符隐藏 */
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="image"></div>
+    <p>
+        title
+        title
+    </p>
+</div>
+
+
+<script>
+
+    window.onload = function () {
+        // 鼠标移动到指定box上时，触发事件
+        //获取指定div元素
+        var boxClass = document.getElementsByClassName("image")[0];
+        boxClass.onmousemove = function (event) {
+            console.log("事件触发!");
+            console.log(event);
+
+            // 获取盒子的位置
+            let boxX = boxClass.offsetLeft;
+            let boxY = boxClass.offsetTop;
+            console.log("盒子的X:" + boxX);
+            console.log("盒子的Y:" + boxY);
+
+            // 获取鼠标的坐标
+            let pageX = event.pageX;
+            let pageY = event.pageY;
+            console.log("浏览器的X:" + pageX);
+            console.log("浏览器的Y:" + pageY);
+
+            //计算鼠标在盒子中的坐标
+            let inBoxX = pageX - boxX;
+            let inBoxY = pageY - boxY;
+            console.log("盒子中的坐标:x-->" + inBoxX + "--y-->" + inBoxY);
+            //计算X轴，并移动图片
+            //每移动5个值就改变一次图片
+            if (inBoxX % 5) {
+                //计算显示第几个图片
+                let imageIndex = parseInt(inBoxX / 5);
+                console.log("当前显示第几张图片:" + imageIndex);
+                //计算显示图片在大图中的位置
+                //计算显示图片的X轴(计算的是大图中的X轴)
+                let imageX = 170 * parseInt(imageIndex % 10);
+                //计算显示图片的Y轴(计算的是大图中的Y轴)
+                let imageY = 95 * parseInt(imageIndex / 10);
+                console.log("imageX:" + imageX);
+                console.log("imageY:" + imageY);
+                //修改背景图片
+                boxClass.style.backgroundPosition = "-" + imageX + 'px' + " -" + imageY + 'px';
+            }
+        }
+
+        //鼠标移除盒子的事件
+        boxClass.onmouseout = () => {
+            boxClass.style.backgroundPosition = "0px 0px"
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
