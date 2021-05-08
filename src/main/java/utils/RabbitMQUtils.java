@@ -26,7 +26,6 @@ public class RabbitMQUtils {
         connectionFactory.setUsername("ems");
         connectionFactory.setPassword("123");
     }
-
     public static Connection getConnection() {
         try {
             return connectionFactory.newConnection();
